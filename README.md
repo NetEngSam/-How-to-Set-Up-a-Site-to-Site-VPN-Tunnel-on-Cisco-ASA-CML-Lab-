@@ -84,6 +84,7 @@ tunnel-group 172.16.1.2 type ipsec-l2l
 tunnel-group 172.16.1.2 ipsec-attributes
 ikev2 remote-authentication pre-shared-key cisco
 ikev2 local-authentication pre-shared-key cisco
+exit
 ```
 ### ASA2
 ```bash
@@ -91,6 +92,7 @@ tunnel-group 172.16.1.1 type ipsec-l2l
 tunnel-group 172.16.1.1 ipsec-attributes
 ikev2 remote-authentication pre-shared-key cisco
 ikev2 local-authentication pre-shared-key cisco
+exit
 ```
 ##
 ### 5. Create IKEv2 Policy 
