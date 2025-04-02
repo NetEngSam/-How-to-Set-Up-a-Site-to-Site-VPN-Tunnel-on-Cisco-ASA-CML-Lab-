@@ -144,9 +144,29 @@ ip route add default via 192.168.10.1
 sudo ip addr add 192.168.20.20/24 dev eth0
 ip route add default via 192.168.20.1
 ```
+##
+### 10. Verification & Testing
+### From PC1, test connectivity:
+```bash
+ping 192.168.20.20
+```
+![image](https://github.com/user-attachments/assets/21e414e9-d449-42a3-8777-18f2342bda1d)
 
+### From PC2, test connectivity:
+```bash
+ping 192.168.10.10
+```
+![image](https://github.com/user-attachments/assets/2c12a8af-e51c-4ca6-9b47-9145b0ea3fa0)
 
+### On ASA1 and ASA2, verify the VPN status:
+```bash
+show crypto ikev2 sa
+show crypto ipsec sa
+```
+![image](https://github.com/user-attachments/assets/f61a2ecc-7266-4f94-a20f-d9d9dfba02ae)
+![image](https://github.com/user-attachments/assets/037d1c1d-b8a2-4e48-90d4-ee8dfeab4a71)
+##
 
-
+![image](https://github.com/user-attachments/assets/61c87644-f80c-492d-aaae-f418c25ec102)
 
 
