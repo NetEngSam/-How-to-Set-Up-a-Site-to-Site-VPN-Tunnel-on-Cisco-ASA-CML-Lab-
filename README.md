@@ -15,3 +15,82 @@ Establish a secure IPSec VPN tunnel between two sites using Cisco ASA firewalls 
 - Cisco ASA (Virtual ASA Nodes)
 - Linux PCs
 ---
+## ⚙️ Configuration Steps
+
+### 1. Interface Configuration (IP addresses)
+
+#### ASA1
+```bash
+conf t
+
+hostname asa1
+
+int g0/0 
+ip address 172.16.1.1 255.255.255.0
+nameif outside
+no shutdown
+
+int g0/1
+ip address 192.168.10.1 255.255.255.0
+nameif inside 
+no shutdown
+exit
+```
+### ASA2
+```bash
+conf t
+
+hostname asa2
+
+int g0/0
+ip address 172.16.1.2 255.255.255.0
+nameif outside 
+no shutdown 
+
+
+int g0/1
+ip address 192.168.20.1 255.255.255.0 
+nameif inside 
+no shutdown
+exit
+```
+##
+### 2. Add Default Route 
+
+### ASA1
+```bash
+route outside 192.168.20.0 255.255.255.0 172.16.1.2
+```
+### ASA2
+```bash
+route outside 192.168.10.0 255.255.255.0 172.16.1.1
+```
+
+##
+### 3. Create Access List for "Interesting Traffic"
+### ASA1
+```bash
+access-list VPN10 extended permit ip 192.168.10.0 255.255.255.0 192.168.20.0 255.255.255.0
+```
+### ASA2
+```bash
+access-list VPN20 extended permit ip 192.168.20.0 255.255.255.0 192.168.10.0 255.255.255.0
+```
+##
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
