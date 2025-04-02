@@ -133,9 +133,17 @@ crypto map 20-10 10 set ikev2 ipsec-proposal IPSEC-PRO
 crypto map 20-10 interface outside
 ```
 ##
-
-
-
+### 9. PC1 & PC2 Ip address configurations 
+### Pc1 
+```bash
+sudo ip addr add 192.168.10.10/24 dev eth0
+ip route add default via 192.168.10.1
+```
+### Pc2
+```bash
+sudo ip addr add 192.168.20.20/24 dev eth0
+ip route add default via 192.168.20.1
+```
 
 
 
