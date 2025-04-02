@@ -77,10 +77,22 @@ access-list VPN10 extended permit ip 192.168.10.0 255.255.255.0 192.168.20.0 255
 access-list VPN20 extended permit ip 192.168.20.0 255.255.255.0 192.168.10.0 255.255.255.0
 ```
 ##
-
-
-
-
+### 4. Define Tunnel Group and Pre-Shared Key (IKEv2)
+### ASA1
+```bash
+tunnel-group 172.16.1.2 type ipsec-l2l
+tunnel-group 172.16.1.2 ipsec-attributes
+ikev2 remote-authentication pre-shared key cisco
+ikev2 local-authentication pre-shared key cisco
+```
+### ASA2
+```bash
+tunnel-group 172.16.1.1 type ipsec-l2l
+tunnel-group 172.16.1.1 ipsec-attributes
+ikev2 remote-authentication pre-shared-key cisco
+ikev2 local-authentication pre-shared-key cisco
+```
+##
 
 
 
